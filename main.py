@@ -17,11 +17,11 @@ def main():
         name = input('Welcome. Enter your account name: ')
         if name in balances:
             action = input("Welcome back "+name+'. What would you like to do? \n [Withdraw]    [Deposit]    [Check Balance] \n\n')
-            if action.lower == 'withdraw':
+            if action.lower() == 'withdraw':
                 print('yeah')
-            elif action.lower == 'deposit':
+            elif action.lower() == 'deposit':
                 print('awesome')
-            elif action.lower == 'check balance':
+            elif action.lower() == 'check balance':
                 print('ah')
             else:
                 input('Action not recognized. Try again?')
