@@ -11,10 +11,11 @@ def await_action1(name):
         deposit(balances, name)
     elif action.lower() == 'check balance':
         check_balances(balances,name)
-    elif action.lower() == 'exit' or 'quit':
+    elif action.lower() == 'exit' or action.lower() == 'quit':
         quit()
     else:
-        input('Action not recognized. Try again?')
+        print('\nAction not recognized. Try again?\n')
+        await_action1(name)
 
 def await_action2(name):
     action = input("\nWhat would you like to do? \n [Withdraw]    [Deposit]    [Check Balance]    [Exit] \n\n")
@@ -24,14 +25,19 @@ def await_action2(name):
         deposit(balances, name)
     elif action.lower() == 'check balance':
         check_balances(balances,name)
-    elif action.lower() == 'exit' or 'quit':
+    elif action.lower() == 'exit' or action.lower() == 'quit':
         quit()
     else:
-        input('Action not recognized. Try again?')
+        print('\nAction not recognized. Try again?\n')
+        await_action2(name)
 
 def create_account(balances):
-    name = input("What would you like your name to be: \n")
-    balances.update({name:0})
+    name = input("What would you like your name to be: \n").strip()
+    if len(name) < 1:
+        print("Invalid name. Please try again.")
+        create_account(balances)
+    else:
+        balances.update({name.lower():0})
 
 def deposit(balances, name):
     print("\nYour current balance is "+str(balances[name])+"$")
