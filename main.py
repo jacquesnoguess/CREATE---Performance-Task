@@ -33,7 +33,7 @@ def await_action2(name):
 
 def create_account(balances):
     name = input("What would you like your name to be: \n").strip()
-    if len(name) < 1:
+    while len(name) < 1:
         print("Invalid name. Please try again.")
         create_account(balances)
     else:
